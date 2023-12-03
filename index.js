@@ -5,6 +5,17 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 
 
+// function Content(text, tcolor, shape, scolor){
+//     this.text = text;
+//     this.tcolor = tcolor;
+//     this.shape = shape;
+//     this.scolor = scolor;
+// }
+
+// Content.prototype.generateXml = function(){
+//     return `${this.text},${this.tcolor},${this.shape},${this.scolor}`
+// };
+
 // / WHEN I am prompted for text
 // THEN I can enter up to three characters
 // WHEN I am prompted for the text color
@@ -31,9 +42,9 @@ function init(){
             name: 'shape',
             message: "Select a shape for your logo",
             choices: [
-                'Circle',
-                'Triangle',
-                'Square',
+                'circle',
+                'triangle',
+                'square',
             ]
         },
         {
@@ -42,9 +53,14 @@ function init(){
             message: "Enter the color for your shape.",
         },
     ])
-    
+
+    // WHEN I have entered input for all the prompts
+    // THEN an SVG file is created named `logo.svg`
+    // AND the output text "Generated logo.svg" is printed in the command line 
+
     .then(function(answers){
-        fs.writeFile('logo.svg', answers, function(err){
+        const template = generateXml(answers);
+        fs.writeFile('logo.svg', template, function(err){
             if(err){
                 console.log(err);
             } else
@@ -54,12 +70,12 @@ function init(){
     });
 };
 
+function generateXml({text, tcolor, shape, scolor}){
+    return `
+    <svg version="1.1" width="300" height="200"> <${shape} fill="${scolor}"/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
+};
 
 init();
 
-
-// WHEN I have entered input for all the prompts
-// THEN an SVG file is created named `logo.svg`
-// AND the output text "Generated logo.svg" is printed in the command line
 // WHEN I open the `logo.svg` file in a browser
 // THEN I am shown a 300x200 pixel image that matches the criteria I entered
