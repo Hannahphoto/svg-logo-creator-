@@ -2,6 +2,9 @@
 
 const inquirer = require("inquirer");
 const Shapes = require('./lib/shapes')
+const Square = require('./lib/shapes');
+const Triangle = require('./lib/shapes');
+const Circle = require('./lib/shapes');
 
 const fs = require("fs");
 
@@ -62,7 +65,7 @@ function init(){
 
 function generateXml({text, tcolor, shape, scolor}){
     return `
-    <svg version="1.1" width="300" height="300"> <${shape} fill="${scolor}"/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
+    <svg version="1.1" width="300" height="300"> <${shape} fill="${scolor}" stroke:${this.tcolor};stroke-width:1/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
 };
 
 init();
