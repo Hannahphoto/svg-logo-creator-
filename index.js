@@ -4,18 +4,6 @@ const inquirer = require("inquirer");
 
 const fs = require("fs");
 
-
-// function Content(text, tcolor, shape, scolor){
-//     this.text = text;
-//     this.tcolor = tcolor;
-//     this.shape = shape;
-//     this.scolor = scolor;
-// }
-
-// Content.prototype.generateXml = function(){
-//     return `${this.text},${this.tcolor},${this.shape},${this.scolor}`
-// };
-
 // / WHEN I am prompted for text
 // THEN I can enter up to three characters
 // WHEN I am prompted for the text color
