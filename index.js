@@ -1,6 +1,7 @@
 // GIVEN a command-line application that accepts user input
 
 const inquirer = require("inquirer");
+const Shapes = require('./lib/shapes')
 
 const fs = require("fs");
 
@@ -34,6 +35,7 @@ function init(){
                 'triangle',
                 'square',
             ]
+            
         },
         {
             type: 'input',
@@ -60,7 +62,7 @@ function init(){
 
 function generateXml({text, tcolor, shape, scolor}){
     return `
-    <svg version="1.1" width="300" height="200"> <${shape} fill="${scolor}"/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
+    <svg version="1.1" width="300" height="300"> <${shape} fill="${scolor}"/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
 };
 
 init();
