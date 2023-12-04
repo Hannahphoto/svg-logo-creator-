@@ -2,9 +2,30 @@
   "scripts": {
     "test": "jest"
   },
-  
   "dependencies": {
     "inquirer": "^8.2.4",
     "jest": "^29.7.0"
-  }
+  },
+  "name": "svg-logo-creator",
+  "description": "An SGV two dimensional logo maker, using Jest and Inquirer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Hannahphoto/svg-logo-creator-.git"
+  },
+  "keywords": [
+    "logo"
+  ],
+  "author": "Hannah Price",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hannahphoto/svg-logo-creator-/issues"
+  },
+  "homepage": "https://github.com/Hannahphoto/svg-logo-creator-#readme"
 }
