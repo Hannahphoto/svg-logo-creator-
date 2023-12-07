@@ -69,7 +69,7 @@ function init(){
 
 
 function generateLogo(shape, text, tcolor, scolor){
-    return `<svg version="1.1" width="500" height="300"><${shape} style="fill:${tcolor}"/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${scolor}">${text}</text></svg>`;
+    return `${shape}`;
 };
 
 init();
