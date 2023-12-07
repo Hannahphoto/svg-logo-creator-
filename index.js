@@ -1,10 +1,7 @@
 // GIVEN a command-line application that accepts user input
 
 const inquirer = require("inquirer");
-const Shapes = require('./lib/shapes')
-const Square = require('./lib/shapes');
-const Triangle = require('./lib/shapes');
-const Circle = require('./lib/shapes');
+const {Square, Triangle, Circle} = require('./lib/shapes');
 
 const fs = require("fs");
 
@@ -34,9 +31,9 @@ function init(){
             name: 'shape',
             message: "Select a shape for your logo",
             choices: [
-                'circle',
-                'triangle',
-                'square',
+                'Circle',
+                'Triangle',
+                'Square',
             ]
             
         },
@@ -51,15 +48,16 @@ function init(){
     // THEN an SVG file is created named `logo.svg`
     // AND the output text "Generated logo.svg" is printed in the command line 
     .then(function(answers){
-        const template = generateLogo(answers);
-        
-        if(answers.shape === 'Circle'){
+        let shape;
+        if(answers.shape == 'Circle'){
             shape = new Circle(answers.text, answers.tcolor, answers.scolor);
-        }else if (answers.shape === 'Triangle'){
+        }else if (answers.shape == 'Triangle'){
             shape = new Triangle(answers.text, answers.tcolor, answers.scolor);
-        }else if (answers.shape === 'Square'){ 
+        }else if (answers.shape == 'Square'){ 
             shape = new Square(answers.text, answers.tcolor, answers.scolor);
         }
+
+        const template = generateLogo(shape.render(),answers.text, answers.tcolor);
 
         fs.writeFile('logo.svg', template, function(err){
             if(err){
@@ -69,8 +67,9 @@ function init(){
         });
     });}
 
+
 function generateLogo(shape, text, tcolor, scolor){
-    return `<svg version="1.1" width="500" height="300"><${shape} fill="${scolor}"><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
+    return `<svg version="1.1" width="500" height="300"><${shape} style="fill:${scolor}"/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
 };
 
 init();
