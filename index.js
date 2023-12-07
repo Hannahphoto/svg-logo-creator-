@@ -57,7 +57,7 @@ function init(){
             shape = new Square(answers.text, answers.tcolor, answers.scolor);
         }
 
-        const template = generateLogo(shape.render(),answers.text, answers.tcolor, answers.scolor);
+        const template = generateLogo(shape.render(), answers.text, answers.tcolor, answers.scolor);
 
         fs.writeFile('logo.svg', template, function(err){
             if(err){
@@ -69,7 +69,7 @@ function init(){
 
 
 function generateLogo(shape, text, tcolor, scolor){
-    return `<svg version="1.1" width="500" height="300"><${shape} style="fill:${scolor}"/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
+    return `<svg version="1.1" width="500" height="300"><${shape} style="fill:${tcolor}"/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${scolor}">${text}</text></svg>`;
 };
 
 init();
