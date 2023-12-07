@@ -57,7 +57,7 @@ function init(){
             shape = new Square(answers.text, answers.tcolor, answers.scolor);
         }
 
-        const template = generateLogo(shape.render(),answers.text, answers.tcolor);
+        const template = generateLogo(shape.render(),answers.text, answers.tcolor, answers.scolor);
 
         fs.writeFile('logo.svg', template, function(err){
             if(err){
