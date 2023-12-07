@@ -50,25 +50,31 @@ function init(){
     // WHEN I have entered input for all the prompts
     // THEN an SVG file is created named `logo.svg`
     // AND the output text "Generated logo.svg" is printed in the command line 
-
     .then(function(answers){
-        const template = generateXml(answers);
+        const template = generateLogo(answers);
+        
+        if(answers.shape === 'Circle'){
+            shape = new Circle(answers.text, answers.tcolor, answers.scolor);
+        }else if (answers.shape === 'Triangle'){
+            shape = new Triangle(answers.text, answers.tcolor, answers.scolor);
+        }else if (answers.shape === 'Square'){ 
+            shape = new Square(answers.text, answers.tcolor, answers.scolor);
+        }
+
         fs.writeFile('logo.svg', template, function(err){
             if(err){
                 console.log(err);
             } else
             console.log('Generated logo.svg')
         });
-        
-    });
-};
+    });}
 
-function generateXml({text, tcolor, shape, scolor}){
-    return `
-    <svg version="1.1" width="300" height="300"> <${shape} fill="${scolor}" stroke:${this.tcolor};stroke-width:1/><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
+function generateLogo(shape, text, tcolor, scolor){
+    return `<svg version="1.1" width="500" height="300"><${shape} fill="${scolor}"><text x="150px" y="125px" font-sixe="60px" text-anchor="middle" fill="${tcolor}">${text}</text></svg>`;
 };
 
 init();
 
 // WHEN I open the `logo.svg` file in a browser
 // THEN I am shown a 300x200 pixel image that matches the criteria I entered
+
