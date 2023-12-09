@@ -35,6 +35,6 @@ https://github.com/Hannahphoto/svg-logo-creator-
 
 # Screenshot 
 <div align="center">
-    <img src="./examples/circle.svg" href = "screenshot of USA Logo." />
+    <img src="./examples/Screenshot.png" href = "screenshot of USA Logo." />
     </div>
 
