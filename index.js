@@ -68,7 +68,7 @@ function init(){
     });}
 
 
-function generateLogo(shape, text, tcolor, scolor){
+function generateLogo(shape){
     return `${shape}`;
 };
 
